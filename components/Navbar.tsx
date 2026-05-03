@@ -1,6 +1,9 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import NextImage from 'next/image'
+import posthog from 'posthog-js'
 
 export default function Navbar() {
   return (
@@ -11,9 +14,9 @@ export default function Navbar() {
                 <p>Dev Event</p>
             </Link>
             <ul>
-                <Link href="/">Home</Link>
-                <Link href="/events">Events</Link>
-                <Link href="/about">About</Link>
+                <Link href="/" onClick={() => posthog.capture('nav_link_clicked', { destination: 'home' })}>Home</Link>
+                <Link href="/events" onClick={() => posthog.capture('nav_link_clicked', { destination: 'events' })}>Events</Link>
+                <Link href="/about" onClick={() => posthog.capture('nav_link_clicked', { destination: 'about' })}>About</Link>
             </ul>
         </nav>
     </header>
