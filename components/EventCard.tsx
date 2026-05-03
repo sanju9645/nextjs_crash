@@ -6,7 +6,6 @@ import NextImage from 'next/image'
 import posthog from 'posthog-js'
 
 interface Props {
-  id: string
   title: string
   image: string
   slug: string
@@ -15,7 +14,7 @@ interface Props {
   time: string
 }
 
-const EventCard = ({id, title, image, slug, location, date, time}: Props) => {
+const EventCard = ({ title, image, slug, location, date, time }: Props) => {
   return (
     <Link href={`/events/${slug}`} className="event-card" onClick={() => posthog.capture('event_card_clicked', { event_title: title, event_slug: slug, event_location: location, event_date: date })}>
         <div className="poster">
